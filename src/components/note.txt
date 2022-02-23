@@ -1,0 +1,13 @@
+*Structure component
+
+            App
+            header
+            products
+                    product1
+                    product2
+                message
+                cart
+                    cart_item
+                    cart_item
+                    cart_result
+            footer
