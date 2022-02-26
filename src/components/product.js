@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
+import * as Message from "./../constants/message";
 class Product extends Component {
-  
+
     render() {
-        var {product}  = this.props;
+        var { product } = this.props;
         return (
 
             <div className="col-lg-4 col-md-6 mb-r">
@@ -21,18 +21,20 @@ class Product extends Component {
                             </strong>
                         </h4>
                         <ul className="rating">
-                        <li>
-                        {this.showRating(product.rating)} 
-                        </li>
-                                                 
+                            <li>
+                                {this.showRating(product.rating)}
+                            </li>
+
                         </ul>
                         <p className="card-text">
-                           {product.description}
+                            {product.description}
                         </p>
                         <div className="card-footer">
                             <span className="left">{product.price}</span>
                             <span className="right">
-                                <a className="btn-floating blue-gradient" data-toggle="tooltip" data-placement="top" data-original-title="Add to Cart">
+                                <a className="btn-floating blue-gradient" data-toggle="tooltip" data-placement="top" data-original-title="Add to Cart"
+                                    onClick={() => this.onAddToCart(product)}
+                                >
                                     <i className="fa fa-shopping-cart" />
                                 </a>
                             </span>
@@ -44,20 +46,29 @@ class Product extends Component {
         )
     }
 
-    showRating = (rating) =>{
+    onAddToCart = (product) => {
+        var { onAddToCart, onChangeMsg } = this.props;
+        onAddToCart(product);
+        onChangeMsg(Message.MSG_ADD_TO_CART_SUCCESS);
+    }
+
+    showRating = (rating) => {
         var result = [];
-         for( var i=1; i <= rating;i++){
-                result.push(<i key={i +'i'} className="fa fa-star"></i>)
-         }
+        for (var i = 1; i <= rating; i++) {
+            result.push(<i key={i + 'i'} className="fa fa-star"></i>)
+        }
 
-         for( var j= 1; j<=(5-rating); j++){
-             result.push(<i key={j + 'j'} className="fa fa-star-o"></i>)
-         }
+        for (var j = 1; j <= (5 - rating); j++) {
+            result.push(<i key={j + 'j'} className="fa fa-star-o"></i>)
+        }
 
-        
-         return result;
-  }
+
+        return result;
+    }
 }
+
+
+
 
 export default Product;
 

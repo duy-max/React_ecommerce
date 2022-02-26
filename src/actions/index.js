@@ -1,10 +1,38 @@
-import * as message from "./../constants/message";
-import * as action from "./../constants/actionTypes";
+
+import * as types from "./../constants/actionTypes";
 
 
-// const listProducts =(products) =>{
-//      return{
-//            types: LIST_PRODUCTS,
-//            products
-//      }
-// }
+export const actAddToCart = (product, quantity) => {
+      return {
+            type: types.ADD_TO_CART,
+            product,
+            quantity
+      }
+}
+
+
+export const actChangeMsg = (message) => {
+      return {
+            type: types.CHANGE_MSG,
+            message
+
+      }
+}
+
+export const actDeleteCartItem = (product) => {
+      return {
+            type: types.DELETE_CART_ITEM,
+            product
+
+      }
+}
+
+
+export const actUpdateQuantity = (product, quantity) => {
+      return {
+            type: types.UPDATE_QUANTITY,
+            product,
+            quantity
+
+      }
+}
